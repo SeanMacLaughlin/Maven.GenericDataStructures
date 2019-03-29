@@ -11,6 +11,23 @@ public class ObjectStack<E> {
     private Object[] elements;
 
     public ObjectStack() {
-
+        elements = (E[])new Object[0];
     }
+
+    public void push(E element) {
+        elements = Arrays.copyOf(elements, elements.length + 1);
+        elements[elements.length - 1] = element;
+    }
+
+    public Object pop() {
+        Object smol = elements[elements.length-1];
+        elements=Arrays.copyOf(elements,elements.length-1);
+        return smol;
+    }
+
+
+    public Boolean isEmpty() {
+        return elements.length == 0;
+    }
+
 }
